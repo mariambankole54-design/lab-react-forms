@@ -9,6 +9,46 @@ import studentsData from "./assets/students.json";
 function App() {
   const [students, setStudents] = useState(studentsData);
 
+  const [fullName, setFullName] = useState("");
+  const [image, setImage] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [program, setProgram] = useState("");
+  const [graduationYear, setGraduationYear] = useState(2023); 
+  const [graduated, setGraduated] = useState(false);
+
+  const handleFullNameInput = (e) => setFullName(e.target.value);
+  const handleImageInput = (e) => setImage(e.target.value);
+  const handlePhoneInput = (e) => setPhone(e.target.value);
+  const handleEmailInput = (e) => setEmail(e.target.value);
+  const handleProgramInput = (e) => setProgram(e.target.value);
+  const handleGraduationYearInput = (e) => setGraduationYear(Number(e.target.value));
+  const handleGraduatedInput = (e) => setGraduated(e.target.checked);
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
+
+    const newStudent = {
+      fullName,
+      email,
+      phone,
+      program,
+      image,
+      graduationYear,
+      graduated,
+    };
+
+    setStudents([...students, newStudent]);
+
+    setFullName("");
+    setImage("");
+    setPhone("");
+    setEmail("");
+    setProgram("");
+    setGraduationYear(2023);
+    setGraduated(false);
+  };
+
 
   return (
     <div className="App pt-20">
